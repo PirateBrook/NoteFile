@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MTCall</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+<style type="text/css">
+.highlight  { background: #ffffff; }
+.highlight .c { color: #999988; font-style: italic } /* Comment */
+.highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
+.highlight .k { font-weight: bold } /* Keyword */
+.highlight .o { font-weight: bold } /* Operator */
+.highlight .cm { color: #999988; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #999999; font-weight: bold } /* Comment.Preproc */
+.highlight .c1 { color: #999988; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #999999; font-weight: bold; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
+.highlight .gd .x { color: #000000; background-color: #ffaaaa } /* Generic.Deleted.Specific */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #aa0000 } /* Generic.Error */
+.highlight .gh { color: #999999 } /* Generic.Heading */
+.highlight .gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
+.highlight .gi .x { color: #000000; background-color: #aaffaa } /* Generic.Inserted.Specific */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #555555 } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #aaaaaa } /* Generic.Subheading */
+.highlight .gt { color: #aa0000 } /* Generic.Traceback */
+.highlight .kc { font-weight: bold } /* Keyword.Constant */
+.highlight .kd { font-weight: bold } /* Keyword.Declaration */
+.highlight .kp { font-weight: bold } /* Keyword.Pseudo */
+.highlight .kr { font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #445588; font-weight: bold } /* Keyword.Type */
+.highlight .m { color: #009999 } /* Literal.Number */
+.highlight .s { color: #d14 } /* Literal.String */
+.highlight .na { color: #008080 } /* Name.Attribute */
+.highlight .nb { color: #0086B3 } /* Name.Builtin */
+.highlight .nc { color: #445588; font-weight: bold } /* Name.Class */
+.highlight .no { color: #008080 } /* Name.Constant */
+.highlight .ni { color: #800080 } /* Name.Entity */
+.highlight .ne { color: #990000; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #990000; font-weight: bold } /* Name.Function */
+.highlight .nn { color: #555555 } /* Name.Namespace */
+.highlight .nt { color: #000080 } /* Name.Tag */
+.highlight .nv { color: #008080 } /* Name.Variable */
+.highlight .ow { font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #009999 } /* Literal.Number.Float */
+.highlight .mh { color: #009999 } /* Literal.Number.Hex */
+.highlight .mi { color: #009999 } /* Literal.Number.Integer */
+.highlight .mo { color: #009999 } /* Literal.Number.Oct */
+.highlight .sb { color: #d14 } /* Literal.String.Backtick */
+.highlight .sc { color: #d14 } /* Literal.String.Char */
+.highlight .sd { color: #d14 } /* Literal.String.Doc */
+.highlight .s2 { color: #d14 } /* Literal.String.Double */
+.highlight .se { color: #d14 } /* Literal.String.Escape */
+.highlight .sh { color: #d14 } /* Literal.String.Heredoc */
+.highlight .si { color: #d14 } /* Literal.String.Interpol */
+.highlight .sx { color: #d14 } /* Literal.String.Other */
+.highlight .sr { color: #009926 } /* Literal.String.Regex */
+.highlight .s1 { color: #d14 } /* Literal.String.Single */
+.highlight .ss { color: #990073 } /* Literal.String.Symbol */
+.highlight .bp { color: #999999 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #008080 } /* Name.Variable.Class */
+.highlight .vg { color: #008080 } /* Name.Variable.Global */
+.highlight .vi { color: #008080 } /* Name.Variable.Instance */
+.highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
+.pl-c {
+    color: #969896;
+}
+
+.pl-c1,.pl-mdh,.pl-mm,.pl-mp,.pl-mr,.pl-s1 .pl-v,.pl-s3,.pl-sc,.pl-sv {
+    color: #0086b3;
+}
+
+.pl-e,.pl-en {
+    color: #795da3;
+}
+
+.pl-s1 .pl-s2,.pl-smi,.pl-smp,.pl-stj,.pl-vo,.pl-vpf {
+    color: #333;
+}
+
+.pl-ent {
+    color: #63a35c;
+}
+
+.pl-k,.pl-s,.pl-st {
+    color: #a71d5d;
+}
+
+.pl-pds,.pl-s1,.pl-s1 .pl-pse .pl-s2,.pl-sr,.pl-sr .pl-cce,.pl-sr .pl-sra,.pl-sr .pl-sre,.pl-src,.pl-v {
+    color: #df5000;
+}
+
+.pl-id {
+    color: #b52a1d;
+}
+
+.pl-ii {
+    background-color: #b52a1d;
+    color: #f8f8f8;
+}
+
+.pl-sr .pl-cce {
+    color: #63a35c;
+    font-weight: bold;
+}
+
+.pl-ml {
+    color: #693a17;
+}
+
+.pl-mh,.pl-mh .pl-en,.pl-ms {
+    color: #1d3e81;
+    font-weight: bold;
+}
+
+.pl-mq {
+    color: #008080;
+}
+
+.pl-mi {
+    color: #333;
+    font-style: italic;
+}
+
+.pl-mb {
+    color: #333;
+    font-weight: bold;
+}
+
+.pl-md,.pl-mdhf {
+    background-color: #ffecec;
+    color: #bd2c00;
+}
+
+.pl-mdht,.pl-mi1 {
+    background-color: #eaffea;
+    color: #55a532;
+}
+
+.pl-mdr {
+    color: #795da3;
+    font-weight: bold;
+}
+
+.pl-mo {
+    color: #1d3e81;
+}
+.task-list {
+padding-left:10px;
+margin-bottom:0;
+}
+
+.task-list li {
+    margin-left: 20px;
+}
+
+.task-list-item {
+list-style-type:none;
+padding-left:10px;
+}
+
+.task-list-item label {
+font-weight:400;
+}
+
+.task-list-item.enabled label {
+cursor:pointer;
+}
+
+.task-list-item+.task-list-item {
+margin-top:3px;
+}
+
+.task-list-item-checkbox {
+display:inline-block;
+margin-left:-20px;
+margin-right:3px;
+vertical-align:1px;
+}
+</style>
+</head>
+<body>
+<h2>
+<a id="user-content-mtcall信息数据库存储" class="anchor" href="#mtcall%E4%BF%A1%E6%81%AF%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%98%E5%82%A8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MTCall信息数据库存储</h2>
+
+<h3>
+<a id="user-content-1-相关类" class="anchor" href="#1-%E7%9B%B8%E5%85%B3%E7%B1%BB" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. 相关类</h3>
+
+<ul>
+<li>CallsManager.java</li>
+<li>CallLogManager.java</li>
+<li>DbModifierWithNotification.java</li>
+<li>CallLogProvider.java</li>
+</ul>
+
+<h3>
+<a id="user-content-2-过程简述" class="anchor" href="#2-%E8%BF%87%E7%A8%8B%E7%AE%80%E8%BF%B0" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. 过程简述</h3>
+
+<p>数据库的存储工作是被CallsManager的回调，将Call信息传给个CallLogManger，电话记录的控制中心，将Call中的数据解析，判断。传入异步任务进行耗时操作，操作为对数据的查询比对，增加，打包，以及最后的数据库插入。</p>
+
+<h3>
+<a id="user-content-3-调用流程" class="anchor" href="#3-%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. 调用流程</h3>
+
+<h4>
+<a id="user-content-callsmanagerjava" class="anchor" href="#callsmanagerjava" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CallsManager.java</h4>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">private</span> <span class="pl-k">void</span> setCallState(<span class="pl-smi">Call</span> call, <span class="pl-k">int</span> newState, <span class="pl-smi">String</span> tag)</pre></div>
+
+<p>这个方法在<code>onSuccessfulIncomingCall</code>中调用，简略代码：</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">private</span> <span class="pl-k">void</span> setCallState(<span class="pl-smi">Call</span> call, <span class="pl-k">int</span> newState, <span class="pl-smi">String</span> tag) {
+        <span class="pl-k">if</span> (call <span class="pl-k">==</span> <span class="pl-c1">null</span>) {
+            <span class="pl-k">return</span>;
+        }
+        <span class="pl-k">int</span> oldState <span class="pl-k">=</span> call<span class="pl-k">.</span>getState();
+        <span class="pl-smi">Log</span><span class="pl-k">.</span>i(<span class="pl-v">this</span>, <span class="pl-s"><span class="pl-pds">"</span>setCallState %s -&gt; %s, call: %s<span class="pl-pds">"</span></span>, <span class="pl-smi">CallState</span><span class="pl-k">.</span>toString(oldState),
+                <span class="pl-smi">CallState</span><span class="pl-k">.</span>toString(newState), call);
+        <span class="pl-k">if</span> (newState <span class="pl-k">!=</span> oldState) {
+
+            call<span class="pl-k">.</span>setState(newState, tag);<span class="pl-c">//改变传入call的状态</span>
+
+            <span class="pl-smi">Trace</span><span class="pl-k">.</span>beginSection(<span class="pl-s"><span class="pl-pds">"</span>onCallStateChanged<span class="pl-pds">"</span></span>);
+
+            <span class="pl-k">if</span> (mCalls<span class="pl-k">.</span>contains(call)) {
+
+                <span class="pl-smi">CallsManagerListener</span> somcAmCallsManagerListener <span class="pl-k">=</span> <span class="pl-c1">null</span>;
+
+                <span class="pl-k">for</span> (<span class="pl-smi">CallsManagerListener</span> listener <span class="pl-k">:</span> mListeners) {
+
+                    <span class="pl-k">if</span> (listener <span class="pl-k">instanceof</span> <span class="pl-smi">SomcAmCallsManager</span>) {
+                        somcAmCallsManagerListener <span class="pl-k">=</span> listener;
+                    } <span class="pl-k">else</span> {
+                        listener<span class="pl-k">.</span>onCallStateChanged(call, oldState, newState);<span class="pl-c">//调用回调方法</span>
+                    }
+
+                }
+
+                <span class="pl-k">if</span> (somcAmCallsManagerListener <span class="pl-k">!=</span> <span class="pl-c1">null</span>) {
+                    somcAmCallsManagerListener<span class="pl-k">.</span>onCallStateChanged(call, oldState, newState);
+                }
+
+                updateCallsManagerState();
+            }
+
+        }
+
+    }</pre></div>
+
+<p><strong>我们调用了回调方法，回调接口在<code>CallLogManager.java</code>中存在实现关系</strong></p>
+
+<h4>
+<a id="user-content-calllogmanagerjava" class="anchor" href="#calllogmanagerjava" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CallLogManager.java</h4>
+
+<div class="highlight highlight-source-java"><pre>    <span class="pl-k">public</span> <span class="pl-k">void</span> onCallStateChanged(<span class="pl-smi">Call</span> call, <span class="pl-k">int</span> oldState, <span class="pl-k">int</span> newState) {
+        <span class="pl-k">int</span> disconnectCause <span class="pl-k">=</span> call<span class="pl-k">.</span>getDisconnectCause()<span class="pl-k">.</span>getCode();
+        <span class="pl-k">boolean</span> isNewlyDisconnected <span class="pl-k">=</span>
+                newState <span class="pl-k">==</span> <span class="pl-smi">CallState</span><span class="pl-c1"><span class="pl-k">.</span>DISCONNECTED</span> <span class="pl-k">||</span> newState <span class="pl-k">==</span> <span class="pl-smi">CallState</span><span class="pl-c1"><span class="pl-k">.</span>ABORTED</span>;
+        <span class="pl-k">boolean</span> isCallCanceled <span class="pl-k">=</span> isNewlyDisconnected <span class="pl-k">&amp;&amp;</span> disconnectCause <span class="pl-k">==</span> <span class="pl-smi">DisconnectCause</span><span class="pl-c1"><span class="pl-k">.</span>CANCELED</span>;
+
+        <span class="pl-k">if</span> (isNewlyDisconnected <span class="pl-k">&amp;&amp;</span>
+                (oldState <span class="pl-k">!=</span> <span class="pl-smi">CallState</span><span class="pl-c1"><span class="pl-k">.</span>SELECT_PHONE_ACCOUNT</span> <span class="pl-k">&amp;&amp;</span>
+                 <span class="pl-k">!</span>call<span class="pl-k">.</span>isConference() <span class="pl-k">&amp;&amp;</span>
+                 <span class="pl-k">!</span>isCallCanceled)) {
+            <span class="pl-k">int</span> type;
+            <span class="pl-k">if</span> (<span class="pl-k">!</span>call<span class="pl-k">.</span>isIncoming()) {
+                type <span class="pl-k">=</span> <span class="pl-smi">Calls</span><span class="pl-c1"><span class="pl-k">.</span>OUTGOING_TYPE</span>;
+            } <span class="pl-k">else</span> <span class="pl-k">if</span> (disconnectCause <span class="pl-k">==</span> <span class="pl-smi">DisconnectCause</span><span class="pl-c1"><span class="pl-k">.</span>MISSED</span>) {
+                type <span class="pl-k">=</span> <span class="pl-smi">Calls</span><span class="pl-c1"><span class="pl-k">.</span>MISSED_TYPE</span>;
+            } <span class="pl-k">else</span> {
+                type <span class="pl-k">=</span> getCallLogTypeForAm(call);<span class="pl-c">//这里获得的type是INCOMING_TYPE</span>
+            }
+            logCall(call, type);<span class="pl-c">//执行此方法</span>
+        }
+    }</pre></div>
+
+<p>CallLogManager中的logCall方法主要完成将Call中的信息取出并判断</p>
+
+<div class="highlight highlight-source-java"><pre>    <span class="pl-k">void</span> logCall(<span class="pl-smi">Call</span> call, <span class="pl-k">int</span> callLogType) {
+        <span class="pl-k">final</span> <span class="pl-k">long</span> creationTime <span class="pl-k">=</span> call<span class="pl-k">.</span>getCreationTimeMillis();
+        <span class="pl-k">final</span> <span class="pl-k">long</span> age <span class="pl-k">=</span> call<span class="pl-k">.</span>getAgeMillis();
+
+        <span class="pl-k">final</span> <span class="pl-smi">String</span> logNumber <span class="pl-k">=</span> getLogNumber(call);
+        <span class="pl-k">final</span> <span class="pl-smi">PhoneAccountHandle</span> emergencyAccountHandle <span class="pl-k">=</span>
+                <span class="pl-smi">TelephonyUtil</span><span class="pl-k">.</span>getDefaultEmergencyPhoneAccount()<span class="pl-k">.</span>getAccountHandle();
+
+        <span class="pl-smi">PhoneAccountHandle</span> accountHandle <span class="pl-k">=</span> call<span class="pl-k">.</span>getTargetPhoneAccount();
+        <span class="pl-k">if</span> (emergencyAccountHandle<span class="pl-k">.</span>equals(accountHandle)) {
+            accountHandle <span class="pl-k">=</span> <span class="pl-c1">null</span>;
+        }
+        <span class="pl-smi">SomcAmCallsManager</span> amCallsManager <span class="pl-k">=</span> mCallsManager<span class="pl-k">.</span>getSomcAmCallsManager();
+        <span class="pl-c">//Answering machine, streams and other properties.</span>
+        <span class="pl-c">//管理应答机，流管理和其他配置</span>
+
+        <span class="pl-k">if</span> (amCallsManager<span class="pl-k">.</span>isThisAnsweringMachineCall(call) <span class="pl-k">&amp;&amp;</span> isOkToLogThisCall) {
+            setAmContentValues(logNumber, call<span class="pl-k">.</span>getHandlePresentation(), creationTime);
+        }
+
+        <span class="pl-smi">CallerInfo</span> callerInfo <span class="pl-k">=</span> call<span class="pl-k">.</span>getCallerInfo();
+        <span class="pl-k">if</span> (callerInfo <span class="pl-k">!=</span> <span class="pl-c1">null</span>) {
+            callerInfo<span class="pl-k">.</span>name <span class="pl-k">=</span> <span class="pl-smi">SomcTelecomUtils</span><span class="pl-k">.</span>getNameFromCall(mContext, call);
+            callerInfo<span class="pl-k">.</span>cnapName <span class="pl-k">=</span> callerInfo<span class="pl-k">.</span>name;
+        }
+        logCall(callerInfo, logNumber, call<span class="pl-k">.</span>getHandlePresentation(),
+                callLogType, callFeatures, accountHandle, creationTime, age, <span class="pl-c1">null</span>,
+                call<span class="pl-k">.</span>isEmergencyCall());<span class="pl-c">//将取出的数据进行下一操作</span>
+    } </pre></div>
+
+<p>之后执行logCall方法，完成异步任务的准备和开启工作</p>
+
+<div class="highlight highlight-source-java"><pre>    <span class="pl-k">private</span> <span class="pl-k">void</span> logCall(
+            <span class="pl-smi">CallerInfo</span> callerInfo,
+            <span class="pl-smi">String</span> number,
+            <span class="pl-k">int</span> presentation,
+            <span class="pl-k">int</span> callType,
+            <span class="pl-k">int</span> features,
+            <span class="pl-smi">PhoneAccountHandle</span> accountHandle,
+            <span class="pl-k">long</span> start,
+            <span class="pl-k">long</span> duration,
+            <span class="pl-smi">Long</span> dataUsage,
+            <span class="pl-k">boolean</span> isEmergency) {
+
+        <span class="pl-k">final</span> <span class="pl-k">boolean</span> okToLogEmergencyNumber <span class="pl-k">=</span>
+                mContext<span class="pl-k">.</span>getResources()<span class="pl-k">.</span>getBoolean(<span class="pl-smi">R</span><span class="pl-k">.</span>bool<span class="pl-k">.</span>allow_emergency_numbers_in_call_log);
+
+        <span class="pl-k">final</span> <span class="pl-k">boolean</span> isOkToLogThisCall <span class="pl-k">=</span> <span class="pl-k">!</span>isEmergency <span class="pl-k">||</span> okToLogEmergencyNumber;
+
+        sendAddCallBroadcast(callType, duration);<span class="pl-c">//TODO:</span>
+
+        <span class="pl-k">if</span> (isOkToLogThisCall) {<span class="pl-c">//数据为true</span>
+
+            <span class="pl-smi">AddCallArgs</span> args <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">AddCallArgs</span>(mContext, callerInfo, number, presentation,
+                    callType, features, accountHandle, start, duration, dataUsage);
+            logCallAsync(args);<span class="pl-c">//继续执行的方法</span>
+
+            <span class="pl-k">if</span> ((callerInfo <span class="pl-k">!=</span> <span class="pl-c1">null</span>) <span class="pl-k">&amp;&amp;</span> (callType <span class="pl-k">!=</span> <span class="pl-smi">Calls</span><span class="pl-c1"><span class="pl-k">.</span>OUTGOING_TYPE</span>)
+                    <span class="pl-k">&amp;&amp;</span> (<span class="pl-k">!</span><span class="pl-smi">TextUtils</span><span class="pl-k">.</span>isEmpty(callerInfo<span class="pl-k">.</span>cnapName))
+                    <span class="pl-k">&amp;&amp;</span> (<span class="pl-k">!</span><span class="pl-smi">TextUtils</span><span class="pl-k">.</span>isEmpty(number))
+                    <span class="pl-k">&amp;&amp;</span> (<span class="pl-k">!</span>callerInfo<span class="pl-k">.</span>contactExists)) {
+                <span class="pl-k">new</span> <span class="pl-smi">AddCnapTask</span>()<span class="pl-k">.</span>execute(args);<span class="pl-c">//true，true，true，true，第五个参数是是否存在于数据库中，不存在则执行</span>
+            }
+        } 
+    }</pre></div>
+
+<p>继续执行 <code>logCallAsync(args)</code>,新建并开启一个异步任务</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">public</span> <span class="pl-k">AsyncTask&lt;<span class="pl-smi">AddCallArgs</span>, <span class="pl-smi">Void</span>, <span class="pl-k">Uri</span>[]&gt;</span> logCallAsync(<span class="pl-smi">AddCallArgs</span> args) {
+        <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-smi">LogCallAsyncTask</span>()<span class="pl-k">.</span>execute(args);
+    }</pre></div>
+
+<h4>
+<a id="user-content-logcallasynctask" class="anchor" href="#logcallasynctask" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LogCallAsyncTask</h4>
+
+<p>内部类，根据重写的方法，执行<code>doInBackground</code>，执行结果是我们需要的<code>Uri</code>数组</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">protected</span> <span class="pl-k">Uri</span>[] doInBackground(<span class="pl-smi">AddCallArgs</span><span class="pl-k">.</span><span class="pl-c1">..</span> callList) {
+            <span class="pl-k">int</span> count <span class="pl-k">=</span> callList<span class="pl-k">.</span>length;
+            <span class="pl-k">Uri</span>[] result <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">Uri</span>[count];<span class="pl-c">//单人或多人通话</span>
+            <span class="pl-k">for</span> (<span class="pl-k">int</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> count; i<span class="pl-k">++</span>) {
+                <span class="pl-smi">AddCallArgs</span> c <span class="pl-k">=</span> callList[i];
+                <span class="pl-k">try</span> {
+                    result[i] <span class="pl-k">=</span> <span class="pl-smi">Calls</span><span class="pl-k">.</span>addCall(c<span class="pl-k">.</span>callerInfo, c<span class="pl-k">.</span>context, c<span class="pl-k">.</span>number, c<span class="pl-k">.</span>presentation,
+                            c<span class="pl-k">.</span>callType, c<span class="pl-k">.</span>features, c<span class="pl-k">.</span>accountHandle, c<span class="pl-k">.</span>timestamp, c<span class="pl-k">.</span>durationInSec,
+                            c<span class="pl-k">.</span>dataUsage, <span class="pl-c1">true</span> <span class="pl-c">/* addForAllUsers */</span>);
+                } <span class="pl-k">catch</span> (<span class="pl-smi">Exception</span> e) {
+                }
+            }
+            <span class="pl-k">return</span> result;
+        }</pre></div>
+
+<p>继续执行<code>Calls.addCall()</code>方法，存在</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">import</span> <span class="pl-smi">android.provider.CallLog.Calls</span>;</pre></div>
+
+<p>因此调用到了<code>CallLog.Calls</code>此方法要完成数据库操作之前的准备工作。包括获取已经存在联系人的Uri，更新DataUsage等操作。</p>
+
+<div class="highlight highlight-source-java"><pre> <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-smi">Uri</span> addCall(<span class="pl-smi">CallerInfo</span> ci, <span class="pl-smi">Context</span> context, <span class="pl-smi">String</span> number,
+                <span class="pl-k">int</span> presentation, <span class="pl-k">int</span> callType, <span class="pl-k">int</span> features, <span class="pl-smi">PhoneAccountHandle</span> accountHandle,
+                <span class="pl-k">long</span> start, <span class="pl-k">int</span> duration, <span class="pl-smi">Long</span> dataUsage, <span class="pl-k">boolean</span> addForAllUsers, <span class="pl-k">boolean</span> is_read) {
+            <span class="pl-k">int</span> numberPresentation <span class="pl-k">=</span> <span class="pl-c1">PRESENTATION_ALLOWED</span>;
+
+            <span class="pl-smi">TelecomManager</span> tm <span class="pl-k">=</span> <span class="pl-c1">null</span>;
+            <span class="pl-k">try</span> {
+                tm <span class="pl-k">=</span> <span class="pl-smi">TelecomManager</span><span class="pl-k">.</span>from(context);
+            } <span class="pl-k">catch</span> (<span class="pl-smi">UnsupportedOperationException</span> e) {}
+
+            <span class="pl-smi">String</span> accountAddress <span class="pl-k">=</span> <span class="pl-c1">null</span>;
+
+            <span class="pl-k">if</span> (tm <span class="pl-k">!=</span> <span class="pl-c1">null</span> <span class="pl-k">&amp;&amp;</span> accountHandle <span class="pl-k">!=</span> <span class="pl-c1">null</span>) {
+                <span class="pl-smi">PhoneAccount</span> account <span class="pl-k">=</span> tm<span class="pl-k">.</span>getPhoneAccount(accountHandle);
+                <span class="pl-k">if</span> (account <span class="pl-k">!=</span> <span class="pl-c1">null</span>) {
+                    <span class="pl-smi">Uri</span> address <span class="pl-k">=</span> account<span class="pl-k">.</span>getSubscriptionAddress();
+                    <span class="pl-k">if</span> (address <span class="pl-k">!=</span> <span class="pl-c1">null</span>) {
+                        accountAddress <span class="pl-k">=</span> address<span class="pl-k">.</span>getSchemeSpecificPart();<span class="pl-c">//此处简要说明，通过TelecomManager</span>
+                                                                        <span class="pl-c">//获取到本地已经存在的联系人的Uri</span>
+                    }
+                }
+            }
+
+            <span class="pl-c">/*正常来电的情况下， 删除的代码块不会被执行*/</span>
+            <span class="pl-c">// accountHandle information</span>
+            <span class="pl-smi">String</span> accountComponentString <span class="pl-k">=</span> <span class="pl-c1">null</span>;
+            <span class="pl-smi">String</span> accountId <span class="pl-k">=</span> <span class="pl-c1">null</span>;
+            <span class="pl-k">if</span> (accountHandle <span class="pl-k">!=</span> <span class="pl-c1">null</span>) {
+                accountComponentString <span class="pl-k">=</span> accountHandle<span class="pl-k">.</span>getComponentName()<span class="pl-k">.</span>flattenToString();
+                accountId <span class="pl-k">=</span> accountHandle<span class="pl-k">.</span>getId();
+            }
+
+            <span class="pl-smi">ContentValues</span> values <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">ContentValues</span>(<span class="pl-c1">6</span>);
+            <span class="pl-c">//存放信息</span>
+            values<span class="pl-k">.</span>put(<span class="pl-c1">NUMBER</span>, number);
+            values<span class="pl-k">.</span>put(<span class="pl-c1">NUMBER_PRESENTATION</span>, <span class="pl-smi">Integer</span><span class="pl-k">.</span>valueOf(numberPresentation));
+            values<span class="pl-k">.</span>put(<span class="pl-c1">TYPE</span>, <span class="pl-smi">Integer</span><span class="pl-k">.</span>valueOf(callType));
+            values<span class="pl-k">.</span>put(<span class="pl-c1">FEATURES</span>, features);
+            values<span class="pl-k">.</span>put(<span class="pl-c1">DATE</span>, <span class="pl-smi">Long</span><span class="pl-k">.</span>valueOf(start));
+            values<span class="pl-k">.</span>put(<span class="pl-c1">DURATION</span>, <span class="pl-smi">Long</span><span class="pl-k">.</span>valueOf(duration));
+            <span class="pl-k">if</span> (dataUsage <span class="pl-k">!=</span> <span class="pl-c1">null</span>) {
+                values<span class="pl-k">.</span>put(<span class="pl-c1">DATA_USAGE</span>, dataUsage);
+            }
+            values<span class="pl-k">.</span>put(<span class="pl-c1">PHONE_ACCOUNT_COMPONENT_NAME</span>, accountComponentString);
+            values<span class="pl-k">.</span>put(<span class="pl-c1">PHONE_ACCOUNT_ID</span>, accountId);
+            values<span class="pl-k">.</span>put(<span class="pl-c1">PHONE_ACCOUNT_ADDRESS</span>, accountAddress);
+            values<span class="pl-k">.</span>put(<span class="pl-c1">NEW</span>, <span class="pl-smi">Integer</span><span class="pl-k">.</span>valueOf(<span class="pl-c1">1</span>));
+
+            <span class="pl-k">if</span> (callType <span class="pl-k">==</span> <span class="pl-c1">MISSED_TYPE</span>) {
+                values<span class="pl-k">.</span>put(<span class="pl-c1">IS_READ</span>, <span class="pl-smi">Integer</span><span class="pl-k">.</span>valueOf(is_read <span class="pl-k">?</span> <span class="pl-c1">1</span> <span class="pl-k">:</span> <span class="pl-c1">0</span>));
+            }
+
+            <span class="pl-k">if</span> ((ci <span class="pl-k">!=</span> <span class="pl-c1">null</span>) <span class="pl-k">&amp;&amp;</span> (ci<span class="pl-k">.</span>contactIdOrZero <span class="pl-k">&gt;</span> <span class="pl-c1">0</span>)) {               
+
+                <span class="pl-k">final</span> <span class="pl-smi">Cursor</span> cursor;
+
+                <span class="pl-k">if</span> (ci<span class="pl-k">.</span>normalizedNumber <span class="pl-k">!=</span> <span class="pl-c1">null</span>) {
+                    <span class="pl-k">final</span> <span class="pl-smi">String</span> normalizedPhoneNumber <span class="pl-k">=</span> ci<span class="pl-k">.</span>normalizedNumber;
+                    cursor <span class="pl-k">=</span> resolver<span class="pl-k">.</span>query(<span class="pl-smi">Phone</span><span class="pl-c1"><span class="pl-k">.</span>CONTENT_URI</span>,
+                            <span class="pl-k">new</span> <span class="pl-smi">String</span>[] { <span class="pl-smi">Phone</span><span class="pl-k">.</span>_ID },
+                            <span class="pl-smi">Phone</span><span class="pl-c1"><span class="pl-k">.</span>CONTACT_ID</span> <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">"</span> =? AND <span class="pl-pds">"</span></span> <span class="pl-k">+</span> <span class="pl-smi">Phone</span><span class="pl-c1"><span class="pl-k">.</span>NORMALIZED_NUMBER</span> <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">"</span> =?<span class="pl-pds">"</span></span>,
+                            <span class="pl-k">new</span> <span class="pl-smi">String</span>[] { <span class="pl-smi">String</span><span class="pl-k">.</span>valueOf(ci<span class="pl-k">.</span>contactIdOrZero),
+                                    normalizedPhoneNumber},
+                            <span class="pl-c1">null</span>);
+                } <span class="pl-k">else</span> {
+
+                }
+
+                <span class="pl-k">if</span> (cursor <span class="pl-k">!=</span> <span class="pl-c1">null</span>) {
+                    <span class="pl-k">try</span> {
+                        <span class="pl-k">if</span> (cursor<span class="pl-k">.</span>getCount() <span class="pl-k">&gt;</span> <span class="pl-c1">0</span> <span class="pl-k">&amp;&amp;</span> cursor<span class="pl-k">.</span>moveToFirst()) {
+                            <span class="pl-k">final</span> <span class="pl-smi">String</span> dataId <span class="pl-k">=</span> cursor<span class="pl-k">.</span>getString(<span class="pl-c1">0</span>);
+                            updateDataUsageStatForData(resolver, dataId);<span class="pl-c">//将Calls表中的DataUsage字段更新</span>
+                            <span class="pl-k">if</span> (duration <span class="pl-k">&gt;=</span> <span class="pl-c1">MIN_DURATION_FOR_NORMALIZED_NUMBER_UPDATE_MS</span>
+                                    <span class="pl-k">&amp;&amp;</span> callType <span class="pl-k">==</span> <span class="pl-smi">Calls</span><span class="pl-c1"><span class="pl-k">.</span>OUTGOING_TYPE</span><span class="pl-c">//条件不成立</span>
+                                    <span class="pl-k">&amp;&amp;</span> <span class="pl-smi">TextUtils</span><span class="pl-k">.</span>isEmpty(ci<span class="pl-k">.</span>normalizedNumber)) {
+                                updateNormalizedNumber(context, resolver, dataId, number);<span class="pl-c">//不执行</span>
+                            }
+                        }
+                    } <span class="pl-k">finally</span> {
+                        cursor<span class="pl-k">.</span>close();
+                    }
+                }
+            }
+
+            <span class="pl-smi">Uri</span> result <span class="pl-k">=</span> <span class="pl-c1">null</span>;
+
+            <span class="pl-k">if</span> (addForAllUsers) {
+                <span class="pl-c">// Insert the entry for all currently running users, in order to trigger any</span>
+                <span class="pl-c">// ContentObservers currently set on the call log.</span>
+                <span class="pl-k">final</span> <span class="pl-smi">UserManager</span> userManager <span class="pl-k">=</span> (<span class="pl-smi">UserManager</span>) context<span class="pl-k">.</span>getSystemService(
+                        <span class="pl-smi">Context</span><span class="pl-c1"><span class="pl-k">.</span>USER_SERVICE</span>);
+                <span class="pl-k">List&lt;<span class="pl-smi">UserInfo</span>&gt;</span> users <span class="pl-k">=</span> userManager<span class="pl-k">.</span>getUsers(<span class="pl-c1">true</span>);
+                <span class="pl-k">final</span> <span class="pl-k">int</span> currentUserId <span class="pl-k">=</span> userManager<span class="pl-k">.</span>getUserHandle();
+                <span class="pl-k">final</span> <span class="pl-k">int</span> count <span class="pl-k">=</span> users<span class="pl-k">.</span>size();
+                <span class="pl-k">for</span> (<span class="pl-k">int</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> count; i<span class="pl-k">++</span>) {
+                    <span class="pl-k">final</span> <span class="pl-smi">UserInfo</span> user <span class="pl-k">=</span> users<span class="pl-k">.</span>get(i);
+                    <span class="pl-k">final</span> <span class="pl-smi">UserHandle</span> userHandle <span class="pl-k">=</span> user<span class="pl-k">.</span>getUserHandle();
+                    <span class="pl-k">if</span> (userManager<span class="pl-k">.</span>isUserRunning(userHandle)
+                            <span class="pl-k">&amp;&amp;</span> <span class="pl-k">!</span>userManager<span class="pl-k">.</span>hasUserRestriction(<span class="pl-smi">UserManager</span><span class="pl-c1"><span class="pl-k">.</span>DISALLOW_OUTGOING_CALLS</span>,
+                                    userHandle)
+                            <span class="pl-k">&amp;&amp;</span> <span class="pl-k">!</span>user<span class="pl-k">.</span>isManagedProfile()) {
+                        <span class="pl-smi">Uri</span> uri <span class="pl-k">=</span> addEntryAndRemoveExpiredEntries(context,
+                                <span class="pl-smi">ContentProvider</span><span class="pl-k">.</span>maybeAddUserId(<span class="pl-c1">CONTENT_URI</span>, user<span class="pl-k">.</span>id), values);<span class="pl-c">//这里是针对多用户存在的情况下</span>
+                        <span class="pl-k">if</span> (user<span class="pl-k">.</span>id <span class="pl-k">==</span> currentUserId) {
+                            result <span class="pl-k">=</span> uri;
+                        }
+                    }
+                }
+            } <span class="pl-k">else</span> {
+                result <span class="pl-k">=</span> addEntryAndRemoveExpiredEntries(context, <span class="pl-c1">CONTENT_URI</span>, values);<span class="pl-c">//默认的操作，继续执行，得到返回的Uri数组</span>
+            }
+
+            <span class="pl-k">return</span> result;
+        }</pre></div>
+
+<p>继续执行, 获取<code>ContentProvider</code>去处理插入和一项删除操作，传入的Uri为：</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">final</span> <span class="pl-smi">Uri</span> <span class="pl-c1">CONTENT_URI</span> <span class="pl-k">=</span> <span class="pl-smi">Uri</span><span class="pl-k">.</span>parse(<span class="pl-s"><span class="pl-pds">"</span>content://call_log/calls<span class="pl-pds">"</span></span>);</pre></div>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">private</span> <span class="pl-k">static</span> <span class="pl-smi">Uri</span> addEntryAndRemoveExpiredEntries(<span class="pl-smi">Context</span> context, <span class="pl-smi">Uri</span> uri,
+                <span class="pl-smi">ContentValues</span> values) {
+            <span class="pl-k">final</span> <span class="pl-smi">ContentResolver</span> resolver <span class="pl-k">=</span> context<span class="pl-k">.</span>getContentResolver();
+            <span class="pl-smi">Uri</span> result <span class="pl-k">=</span> resolver<span class="pl-k">.</span>insert(uri, values);
+            resolver<span class="pl-k">.</span>delete(uri, <span class="pl-s"><span class="pl-pds">"</span>_id IN <span class="pl-pds">"</span></span> <span class="pl-k">+</span>
+                    <span class="pl-s"><span class="pl-pds">"</span>(SELECT _id FROM calls ORDER BY <span class="pl-pds">"</span></span> <span class="pl-k">+</span> <span class="pl-c1">DEFAULT_SORT_ORDER</span>
+                    <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">"</span> LIMIT -1 OFFSET 500)<span class="pl-pds">"</span></span>, <span class="pl-c1">null</span>);
+            <span class="pl-k">return</span> result;
+        }</pre></div>
+
+<h3>
+<a id="user-content-数据库操作" class="anchor" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>数据库操作</h3>
+
+<p>根据Uri匹配规则</p>
+
+<h4>
+<a id="user-content-calllogproviderjava" class="anchor" href="#calllogproviderjava" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CallLogProvider.java</h4>
+
+<p>执行insert方法,在此方法中，进行了线程安全，数据比对，添加其他信息继续执行。</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">public</span> <span class="pl-smi">Uri</span> insert(<span class="pl-smi">Uri</span> uri, <span class="pl-smi">ContentValues</span> values) {
+        waitForAccess(mReadAccessLatch);<span class="pl-c">//特殊情况下线程中断等待interrupt方法</span>
+        checkForSupportedColumns(sCallsProjectionMap, values);<span class="pl-c">//传入的数据是否对应和正确，抛出异常</span>
+        <span class="pl-c">// Inserting a voicemail record through call_log requires the voicemail</span>
+        <span class="pl-c">// permission and also requires the additional voicemail param set.</span>
+        <span class="pl-k">if</span> (hasVoicemailValue(values)) {
+            checkIsAllowVoicemailRequest(uri);
+            mVoicemailPermissions<span class="pl-k">.</span>checkCallerHasWriteAccess(getCallingPackage());
+        }
+        <span class="pl-k">if</span> (mCallsInserter <span class="pl-k">==</span> <span class="pl-c1">null</span>) {<span class="pl-c">//获取帮助类</span>
+            <span class="pl-smi">SQLiteDatabase</span> db <span class="pl-k">=</span> mDbHelper<span class="pl-k">.</span>getWritableDatabase();
+            mCallsInserter <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">DatabaseUtils</span>.<span class="pl-smi">InsertHelper</span>(db, <span class="pl-smi">Tables</span><span class="pl-c1"><span class="pl-k">.</span>CALLS</span>);
+        }
+
+        <span class="pl-smi">ContentValues</span> copiedValues <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">ContentValues</span>(values);
+
+        <span class="pl-c">// Add the computed fields to the copied values.</span>
+        mCallLogInsertionHelper<span class="pl-k">.</span>addComputedValues(copiedValues);<span class="pl-c">//添加了诸如Google位置信息，群组信息等</span>
+
+        <span class="pl-k">long</span> rowId <span class="pl-k">=</span> getDatabaseModifier(mCallsInserter)<span class="pl-k">.</span>insert(copiedValues);<span class="pl-c">//继续执行</span>
+        <span class="pl-k">if</span> (rowId <span class="pl-k">&gt;</span> <span class="pl-c1">0</span>) {
+            <span class="pl-k">return</span> <span class="pl-smi">ContentUris</span><span class="pl-k">.</span>withAppendedId(uri, rowId);
+        }
+        <span class="pl-k">return</span> <span class="pl-c1">null</span>;
+    }</pre></div>
+
+<p>调用getDatabaseModifier()将会新建一个DbModifierWithNotification对象。</p>
+
+<h4>
+<a id="user-content-databasemodifierjava" class="anchor" href="#databasemodifierjava" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DatabaseModifier.java</h4>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">private</span> <span class="pl-smi">DatabaseModifier</span> getDatabaseModifier(<span class="pl-smi">SQLiteDatabase</span> db) {
+        <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-smi">DbModifierWithNotification</span>(<span class="pl-smi">Tables</span><span class="pl-c1"><span class="pl-k">.</span>CALLS</span>, db, context());
+    }</pre></div>
+
+<p>构造方法</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">public</span> DbModifierWithNotification(<span class="pl-smi">String</span> tableName, <span class="pl-smi">SQLiteDatabase</span> db, <span class="pl-smi">Context</span> context) {
+        <span class="pl-v">this</span>(tableName, db, <span class="pl-c1">null</span>, context);
+    }</pre></div>
+
+<p>继续调用</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">private</span> DbModifierWithNotification(<span class="pl-smi">String</span> tableName, <span class="pl-smi">SQLiteDatabase</span> db,
+            <span class="pl-smi">InsertHelper</span> insertHelper, <span class="pl-smi">Context</span> context) {
+        mTableName <span class="pl-k">=</span> tableName;
+        mDb <span class="pl-k">=</span> db;
+        mInsertHelper <span class="pl-k">=</span> insertHelper;
+        mContext <span class="pl-k">=</span> context;
+        mBaseUri <span class="pl-k">=</span> mTableName<span class="pl-k">.</span>equals(<span class="pl-smi">Tables</span><span class="pl-c1"><span class="pl-k">.</span>VOICEMAIL_STATUS</span>) <span class="pl-k">?</span>
+                <span class="pl-smi">Status</span><span class="pl-c1"><span class="pl-k">.</span>CONTENT_URI</span> <span class="pl-k">:</span> <span class="pl-smi">Voicemails</span><span class="pl-c1"><span class="pl-k">.</span>CONTENT_URI</span>;
+        mIsCallsTable <span class="pl-k">=</span> mTableName<span class="pl-k">.</span>equals(<span class="pl-smi">Tables</span><span class="pl-c1"><span class="pl-k">.</span>CALLS</span>);<span class="pl-c">//进行判断</span>
+        mVoicemailPermissions <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">VoicemailPermissions</span>(mContext);
+    }</pre></div>
+
+<p>对象新建完成之后要继续进行insert（）方法</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">public</span> <span class="pl-k">long</span> insert(<span class="pl-smi">ContentValues</span> values) {
+        <span class="pl-k">Set&lt;<span class="pl-smi">String</span>&gt;</span> packagesModified <span class="pl-k">=</span> getModifiedPackages(values);
+        <span class="pl-k">long</span> rowId <span class="pl-k">=</span> mInsertHelper<span class="pl-k">.</span>insert(values);<span class="pl-c">//具体的插入操作细节我们不需要去关心，数据已经完整的赋予了InsertHelper</span>
+        <span class="pl-k">if</span> (rowId <span class="pl-k">&gt;</span> <span class="pl-c1">0</span> <span class="pl-k">&amp;&amp;</span> packagesModified<span class="pl-k">.</span>size() <span class="pl-k">!=</span> <span class="pl-c1">0</span>) {
+            notifyVoicemailChangeOnInsert(
+                    <span class="pl-smi">ContentUris</span><span class="pl-k">.</span>withAppendedId(mBaseUri, rowId), packagesModified);<span class="pl-c">//通知有语音消息</span>
+        }
+        <span class="pl-k">if</span> (rowId <span class="pl-k">&gt;</span> <span class="pl-c1">0</span> <span class="pl-k">&amp;&amp;</span> mIsCallsTable) {
+            notifyCallLogChange();<span class="pl-c">//执行此方法</span>
+        }
+        <span class="pl-k">return</span> rowId;<span class="pl-c">//返回的操作，回头再去看最终返回，对返回的Uri没有操作</span>
+    }</pre></div>
+
+<h3>
+<a id="user-content-小结" class="anchor" href="#%E5%B0%8F%E7%BB%93" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>小结</h3>
+
+<h5>
+<a id="user-content-至此数据库的操作就已经完成" class="anchor" href="#%E8%87%B3%E6%AD%A4%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%93%8D%E4%BD%9C%E5%B0%B1%E5%B7%B2%E7%BB%8F%E5%AE%8C%E6%88%90" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>至此，数据库的操作就已经完成</h5>
+
+<h4>
+<a id="user-content-之后便是广播之后的操作广播之后会勾起backupapp的服务暂时不考虑" class="anchor" href="#%E4%B9%8B%E5%90%8E%E4%BE%BF%E6%98%AF%E5%B9%BF%E6%92%AD%E4%B9%8B%E5%90%8E%E7%9A%84%E6%93%8D%E4%BD%9C%E5%B9%BF%E6%92%AD%E4%B9%8B%E5%90%8E%E4%BC%9A%E5%8B%BE%E8%B5%B7backupapp%E7%9A%84%E6%9C%8D%E5%8A%A1%E6%9A%82%E6%97%B6%E4%B8%8D%E8%80%83%E8%99%91" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>之后便是广播之后的操作，广播之后，会勾起BackupApp的服务，暂时不考虑。</h4>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
